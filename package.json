@@ -1,6 +1,6 @@
 {
   "name": "tab-renamer-chrome",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Lightweight open source chrome extension to rename tabs",
   "main": "index.js",
   "scripts": {
