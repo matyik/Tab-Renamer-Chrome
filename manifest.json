@@ -1,0 +1,20 @@
+{
+  "name": "Tab Renamer",
+  "description": "Rename tabs with a click",
+  "version": "0.0.1",
+  "manifest_version": 3,
+  "background": {
+    "service_worker": "dist/background.js",
+    "type": "module"
+  },
+  "action": {},
+  "permissions": ["scripting", "activeTab"],
+  "commands": {
+    "_execute_action": {
+      "suggested_key": {
+        "default": "Ctrl+B",
+        "mac": "Command+B"
+      }
+    }
+  }
+}
