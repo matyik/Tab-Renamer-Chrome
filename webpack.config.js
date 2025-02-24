@@ -4,14 +4,14 @@ module.exports = {
   mode: 'development', // or 'production' for final build
   entry: {
     background: path.resolve(__dirname, 'src/background.ts'),
-    content_script: path.resolve(__dirname, 'src/content_script.ts')
+    content_script: path.resolve(__dirname, 'src/content_script.ts'),
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: '[name].js'
+    filename: '[name].js',
   },
   resolve: {
-    extensions: ['.ts', '.js']
+    extensions: ['.ts', '.js'],
   },
   module: {
     rules: [
@@ -22,14 +22,14 @@ module.exports = {
             loader: 'ts-loader',
             options: {
               compilerOptions: {
-                module: 'CommonJS'
-              }
-            }
-          }
+                module: 'CommonJS',
+              },
+            },
+          },
         ],
-        exclude: /node_modules/
-      }
-    ]
+        exclude: /node_modules/,
+      },
+    ],
   },
-  devtool: 'cheap-module-source-map' // Recommended for development
+  devtool: 'cheap-module-source-map', // Recommended for development
 };
