@@ -1,5 +1,190 @@
 <html>
+  <head>
+    <style>
+      :root {
+        --md-sys-color-primary: #006874;
+        --md-sys-color-on-primary: #ffffff;
+        --md-sys-color-primary-container: #97f0ff;
+        --md-sys-color-on-primary-container: #001f24;
+        --md-sys-color-surface: #fafdfd;
+        --md-sys-color-on-surface: #191c1d;
+        --md-sys-color-error: #ba1a1a;
+        --md-sys-color-on-error: #ffffff;
+      }
+
+      body {
+        width: 300px;
+        padding: 16px;
+        font-family: system-ui;
+        background: var(--md-sys-color-surface);
+        color: var(--md-sys-color-on-surface);
+        margin: 0;
+      }
+
+      button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        width: 100%;
+        margin: 8px 0;
+        padding: 10px;
+        cursor: pointer;
+        border: none;
+        border-radius: 20px;
+        background: var(--md-sys-color-primary);
+        color: var(--md-sys-color-on-primary);
+        font-weight: 500;
+        transition: all 0.2s;
+      }
+
+      button:hover {
+        opacity: 0.9;
+      }
+
+      .icon {
+        width: 16px;
+        height: 16px;
+        display: inline-block;
+        vertical-align: middle;
+      }
+
+      .rule-form {
+        margin-top: 16px;
+        background: var(--md-sys-color-primary-container);
+        padding: 16px;
+        border-radius: 12px;
+        color: var(--md-sys-color-on-primary-container);
+      }
+
+      input {
+        width: 100%;
+        margin: 4px 0;
+        padding: 8px 12px;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+
+      .rules-list {
+        margin-top: 16px;
+        display: none;
+      }
+
+      .rules-list.has-rules {
+        display: block;
+      }
+
+      .rule-item {
+        background: var(--md-sys-color-surface);
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        padding: 12px;
+        margin: 8px 0;
+        border-radius: 12px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .delete-rule {
+        background: var(--md-sys-color-error);
+        color: var(--md-sys-color-on-error);
+        padding: 8px;
+        width: auto;
+        margin: 0;
+        border-radius: 4px;
+      }
+
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 16px;
+      }
+
+      .settings-button {
+        width: auto;
+        padding: 8px;
+        margin: 0;
+        border-radius: 50%;
+        background: transparent;
+        color: var(--md-sys-color-on-surface);
+      }
+
+      .settings-button:hover {
+        background: rgba(0, 0, 0, 0.05);
+      }
+
+      .settings-menu {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--md-sys-color-surface);
+        padding: 16px;
+        box-sizing: border-box;
+      }
+
+      .settings-menu.visible {
+        display: block;
+      }
+
+      .shortcut-input {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        margin: 8px 0;
+      }
+
+      .shortcut-input input {
+        width: auto;
+        flex: 1;
+      }
+    </style>
+  </head>
   <body>
-    <h1>Hello Extensions</h1>
+    <div class="header">
+      <h2>Tab Renamer</h2>
+      <button class="settings-button" id="settingsButton">
+        <img class="icon" id="settings-icon" alt="settings" />
+      </button>
+    </div>
+    <button id="renameTab">
+      <img class="icon" id="edit-icon" alt="edit" />
+      Rename Current Tab
+    </button>
+    <div>
+      <h3>Add New Rule</h3>
+      <input type="text" id="urlPattern" placeholder="URL contains..." />
+      <input type="text" id="newTitle" placeholder="New tab title..." />
+      <button id="addRule">
+        <img class="icon" id="add-icon" alt="add" />
+        Add Rule
+      </button>
+    </div>
+    <div class="rules-list">
+      <h3>Current Rules</h3>
+      <div id="rulesList"></div>
+    </div>
+    <div class="settings-menu" id="settingsMenu">
+      <div class="header">
+        <h2>Settings</h2>
+        <button class="settings-button" id="closeSettings">
+          <span>&times;</span>
+        </button>
+      </div>
+      <h3>Keyboard Shortcuts</h3>
+      <div class="shortcut-input">
+        <label>Rename Tab:</label>
+        <input type="text" id="renameShortcut" readonly placeholder="Click to record" />
+      </div>
+      <div class="shortcut-input">
+        <label>Add Rule:</label>
+        <input type="text" id="addRuleShortcut" readonly placeholder="Click to record" />
+      </div>
+    </div>
+    <script src="../dist/popup.js"></script>
   </body>
 </html>
